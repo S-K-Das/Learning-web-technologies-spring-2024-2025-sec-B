@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JS Example</title>
+</head>
+<body>
+    <h1 id="head">JS Example</h1>
+    
+    <form method="" action="" onsubmit="return test()">
+        <input type="text" id="username" name="username" value="" onblur="test()" />
+        <input type="text" id="password" name="password" value="" />
+        <input type="submit" name="button" id="button" value="Submit" />
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+        function test() {
+            let username = document.getElementById('username').value;
+            let password = document.getElementById('password').value;
+            let msg = document.getElementById('msg');
+
+            if (username === "") {
+                msg.innerHTML = "Please type the username first!";
+                msg.style.color = 'red';
+                return false;
+            }
+
+            if (password === "") {
+                msg.innerHTML = "Please type the password first!";
+                msg.style.color = 'red';
+                return false;
+            }
+
+            if (username === password) {
+                msg.innerHTML = "Welcome! Redirecting to homepage...";
+                msg.style.color = 'green';
+                window.location.href = "homepage.html"; 
+                return false; 
+            } else {
+                msg.innerHTML = "Username and password do not match!";
+                msg.style.color = 'red';
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
