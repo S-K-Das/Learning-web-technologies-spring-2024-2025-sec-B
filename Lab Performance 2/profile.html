@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Profile</title>
+</head>
+<body>
+<h1>User Profile</h1>
+
+<form method="" action="" onsubmit="return valProfile()">
+  <label for="userId">User ID:</label><br>
+  <input type="number" id="userId" name="userId" placeholder="Enter positive number" min="1"><br><br>
+
+  <label for="profilePicture">Profile Picture:</label><br>
+  <input type="file" id="profilePicture" name="profilePicture" accept="image/*"><br><br>
+
+  <input type="submit" value="Submit" />
+</form>
+<p id="profileMsg"></p>
+
+<script>
+    function valProfile() {
+        let profileMsg = document.getElementById('profileMsg');
+        
+        let userId = document.getElementById('userId').value;
+        if (userId === "" || userId <= 0) {
+            profileMsg.innerHTML = "User ID must be a positive number.";
+            profileMsg.style.color = 'red';
+            return false;
+        }
+        let profilePicture = document.getElementById('profilePicture').files.length;
+        if (profilePicture === 0) {
+            profileMsg.innerHTML = "Please upload a profile picture.";
+            profileMsg.style.color = 'red';
+            return false;
+        }
+
+        profileMsg.innerHTML = "Profile is valid.";
+        profileMsg.style.color = 'green';
+        return true;
+    }
+</script>
+</body>
+</html>

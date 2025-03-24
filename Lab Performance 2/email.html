@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Email</title>
+</head>
+<body>
+<h1 id="head">Email</h1>
+<form method="" action="" onsubmit="return valEmail()">
+<input type="text" id="email" name="email" value="" onblur="valEmail()"/>
+<input type="submit" name="button" id="button" value="Submit" />
+</form>
+
+<p id="msg"></p>
+
+<script>
+    function valEmail() {
+        let email = document.getElementById('email').value.trim();
+        let msg = document.getElementById('msg');
+        
+        if (email === "") {
+            msg.innerHTML = "Please enter your email address.";
+            msg.style.color = 'red';
+            return false;
+        }
+
+        if (email.indexOf('@') === -1 || email.indexOf('.') === -1 || email.indexOf('@') > email.lastIndexOf('.')) {
+            msg.innerHTML = "Invalid email format.";
+            msg.style.color = 'red';
+            return false;
+        }
+
+        msg.innerHTML = "Valid email address!";
+        msg.style.color = 'green';
+        return true;
+    }
+</script>
+</body>
+</html>

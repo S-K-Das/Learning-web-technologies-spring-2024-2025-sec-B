@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Gender</title>
+</head>
+<body>
+<h1>Gender</h1>
+
+<form method="" action="" onsubmit="return valGender()">
+  <label><input type="radio" id="male" name="gender" value="male"> Male</label>
+  <label><input type="radio" id="female" name="gender" value="female"> Female</label>
+  <label><input type="radio" id="other" name="gender" value="other"> Other</label>
+  <input type="submit" value="Submit" />
+</form>
+<p id="genderMsg"></p>
+
+<script>
+    function valGender() {
+        let genderMsg = document.getElementById('genderMsg');
+        let male = document.getElementById('male');
+        let female = document.getElementById('female');
+        let other = document.getElementById('other');
+        
+        if (!male.checked && !female.checked && !other.checked) {
+            genderMsg.innerHTML = "Please select your gender.";
+            genderMsg.style.color = 'red';
+            return false;
+        }
+
+        genderMsg.innerHTML = "Gender selected successfully!";
+        genderMsg.style.color = 'green';
+        return true;
+    }
+</script>
+</body>
+</html>

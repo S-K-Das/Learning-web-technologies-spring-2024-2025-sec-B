@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Name</title>
+</head>
+<body>
+<h1 id="head">Name</h1>
+<form method="" action="" onsubmit="return test()">
+<input type="text" id="username" name="username" value="" onblur="test()"/>
+<input type="submit" name="button" id="button" value="Submit" />
+</form>
+
+<p id="msg"></p>
+
+<script>
+    function test() {
+        let username = document.getElementById('username').value.trim();
+        let msg = document.getElementById('msg');
+        
+        if (username === "") {
+            msg.innerHTML = "Please type username first!";
+            msg.style.color = 'red';
+            return false;
+        }
+
+        let words = username.split(' ').filter(word => word !== '');
+        if (words.length < 2) {
+            msg.innerHTML = "Invalid username. Must contain at least two words.";
+            msg.style.color = 'red';
+            return false;
+        }
+
+        if (!/^[a-zA-Z]/.test(username)) {
+            msg.innerHTML = "Invalid username. Must start with a letter.";
+            msg.style.color = 'red';
+            return false;
+        }
+
+        for (let word of words) {
+            for (let char of word) {
+                if (!(char >= 'a' && char <= 'z') && !(char >= 'A' && char <= 'Z') && char !== '.' && char !== '-') {
+                    msg.innerHTML = "Invalid username. Only letters, dots, or dashes are allowed.";
+                    msg.style.color = 'red';
+                    return false;
+                }
+            }
+        }
+
+        document.getElementById('head').innerHTML = username;
+        msg.innerHTML = "Valid username!";
+        msg.style.color = 'green';
+        return true;
+    }
+</script>
+</body>
+</html>
